@@ -7,7 +7,7 @@ This package is designed to work with the [Laravel](https://laravel.com) framewo
 Install via composer:
 
 ```
-composer require mtownsend/response-xml
+composer require michelmelo/response-xml
 ```
 
 ### Registering the service provider
@@ -18,7 +18,7 @@ For Laravel 5.4 and lower, add the following line to your ``config/app.php``:
 /*
  * Package Service Providers...
  */
-Mtownsend\ResponseXml\Providers\ResponseXmlServiceProvider::class,
+MichelMelo\ResponseXml\Providers\ResponseXmlServiceProvider::class,
 ```
 
 For Laravel 5.5 and greater, the package will auto register the provider for you.
@@ -28,7 +28,7 @@ For Laravel 5.5 and greater, the package will auto register the provider for you
 To register the service provider, add the following line to ``app/bootstrap/app.php``:
 
 ```php
-$app->register(Mtownsend\ResponseXml\Providers\ResponseXmlServiceProvider::class);
+$app->register(MichelMelo\ResponseXml\Providers\ResponseXmlServiceProvider::class);
 ```
 
 ## Quick start
@@ -124,12 +124,6 @@ The only difference between this method and ``->xml()`` is ``$data`` can potenti
 Have you ever found yourself wishing Laravel offered the same exemplary support for returning XML responses as it does for JSON? Imagine you are creating an api platform and want to be inclusive of other apps that would prefer to make XML requests to your application - sometimes the reasons are more than preferential. Wouldn't it be a dream if you could return XML as simply as writing ``return response()->xml($data);`` and it just worked? **Now you can!**
 
 This package achieves one critical goal: respond with XML as easily as you can with JSON in your Laravel application.
-
-## Other packages you may be interested in
-
-- [mtownsend/collection-xml](https://github.com/mtownsend5512/collection-xml)
-- [mtownsend/request-xml](https://github.com/mtownsend5512/request-xml)
-- [mtownsend/xml-to-array](https://github.com/mtownsend5512/xml-to-array)
 
 ## Credits
 
