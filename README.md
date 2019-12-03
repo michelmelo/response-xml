@@ -46,14 +46,14 @@ $data = [
 return response()->xml($data);
 
 // Returns:
-<?xml version="1.0"?>
-<response>
-    <status>success</status>
-    <data>
-        <first_name>John</first_name>
-        <last_name>Smith</last_name>
-    </data>
-</response>
+// <?xml version="1.0"?>
+// <response>
+//     <status>success</status>
+//     <data>
+//         <first_name>John</first_name>
+//         <last_name>Smith</last_name>
+//     </data>
+// </response>
 ```
 
 ### Respond with xml from a collection or eloquent query
@@ -107,7 +107,7 @@ The ``$xml`` argument is the data you want to be transformed into xml (may also 
 
 ``$status`` is the http code your response will send.
 
-``$headers`` is an array of key/values of http headers your response will return. A default header of ``Content-Type: application/xml`` is automatically applied, but can be overwritten.
+``$headers`` is an array of key/values of http headers your response will return.
 
 ``$xmlRoot`` will change the root xml element. Default is ``response``.
 
@@ -135,15 +135,7 @@ This package achieves one critical goal: respond with XML as easily as you can w
 
 - Mark Townsend
 - [Spatie](https://spatie.be/)
-- [All Contributors](../../contributors)
-
-## Testing
-
-You can run the tests with:
-
-```bash
-./vendor/bin/phpunit
-```
+- All Contributors
 
 ## License
 
