@@ -1,6 +1,6 @@
 <?php
 
-namespace Mtownsend\ResponseXml\Providers;
+namespace MichelMelo\ResponseXml\Providers;
 
 use Illuminate\Container\Container;
 use Illuminate\Support\ServiceProvider;
