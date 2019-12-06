@@ -121,7 +121,7 @@ $array = [
     ]
 ];
 
-$result = ArrayToXml::convert($array);
+return response()->preferredForma($array);
 ```
 
 This code will result in:
@@ -161,7 +161,7 @@ $array = [
     ]
 ];
 
-$result = ArrayToXml::convert($array);
+return response()->preferredForma($array);
 ```
 
 This code will result in:
