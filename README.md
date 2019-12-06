@@ -44,16 +44,18 @@ $data = [
     ]
 ];
 return response()->xml($data);
+```
 
-// Returns:
-// <?xml version="1.0"?>
-// <response>
-//     <status>success</status>
-//     <data>
-//         <first_name>John</first_name>
-//         <last_name>Smith</last_name>
-//     </data>
-// </response>
+Returns:
+```xml
+<?xml version="1.0"?>
+<response>
+    <status>success</status>
+    <data>
+        <first_name>John</first_name>
+        <last_name>Smith</last_name>
+    </data>
+</response>
 ```
 
 ### Respond with xml from a collection or eloquent query
@@ -97,6 +99,89 @@ $data = [
 return response()->preferredFormat($data);
 ```
 
+
+### Adding attributes
+
+You can use a key named `_attributes` to add attributes to a node, and `_value` to specify the value.
+
+```php
+$array = [
+    'Good guy' => [
+        '_attributes' => ['attr1' => 'value'],
+        'name' => 'Luke Skywalker',
+        'weapon' => 'Lightsaber'
+    ],
+    'Bad guy' => [
+        'name' => 'Sauron',
+        'weapon' => 'Evil Eye'
+    ],
+    'The survivor' => [
+        '_attributes' => ['house'=>'Hogwarts'],
+        '_value' => 'Harry Potter'
+    ]
+];
+
+$result = ArrayToXml::convert($array);
+```
+
+This code will result in:
+
+```xml
+<?xml version="1.0"?>
+<root>
+    <Good_guy attr1="value">
+        <name>Luke Skywalker</name>
+        <weapon>Lightsaber</weapon>
+    </Good_guy>
+    <Bad_guy>
+        <name>Sauron</name>
+        <weapon>Evil Eye</weapon>
+    </Bad_guy>
+    <The_survivor house="Hogwarts">
+        Harry Potter
+    </The_survivor>
+</root>
+```
+
+### Using reserved characters
+
+It is also possible to wrap the value of a node into a CDATA section. This allows you to use reserved characters.
+
+```php
+$array = [
+    'Good guy' => [
+        'name' => [
+            '_cdata' => '<h1>Luke Skywalker</h1>'
+        ],
+        'weapon' => 'Lightsaber'
+    ],
+    'Bad guy' => [
+        'name' => '<h1>Sauron</h1>',
+        'weapon' => 'Evil Eye'
+    ]
+];
+
+$result = ArrayToXml::convert($array);
+```
+
+This code will result in:
+
+```xml
+<?xml version="1.0"?>
+<root>
+    <Good_guy>
+        <name><![CDATA[<h1>Luke Skywalker</h1>]]></name>
+        <weapon>Lightsaber</weapon>
+    </Good_guy>
+    <Bad_guy>
+        <name>&lt;h1&gt;Sauron&lt;/h1&gt;</name>
+        <weapon>Evil Eye</weapon>
+    </Bad_guy>
+</root>
+```
+
+
+
 ## Methods and arguments
 
 **Response method**
@@ -125,10 +210,14 @@ Have you ever found yourself wishing Laravel offered the same exemplary support 
 
 This package achieves one critical goal: respond with XML as easily as you can with JSON in your Laravel application.
 
+##more
+
+https://github.com/spatie/array-to-xml
+
 ## Credits
 
-- Mark Townsend
-- [Spatie](https://spatie.be/)
+-  [Mark Townsend ](https://github.com/mtownsend5512)
+- [Spatie](https://github.com/spatie/array-to-xml)
 - All Contributors
 
 ## License
